@@ -15,7 +15,13 @@ import lombok.extern.slf4j.Slf4j;
 public class demo6_quick {
 
   public static void main(String[] args) {
-    int[] arr = {7, 3, 2, 6, 8, 1, 9, 5, 4, 10};
+    int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 1, 9, 5, 6, 4, 9, 6, 10};
+    // int[] arr = {7, 3, 9, 2, 6, 8, 8, 1, 9, 5, 4, 9, 10};
+    // int[] arr = {7, 3, 2, 6, 8, 1, 9, 5, 4, 10};
+    // int[] arr = {7, 3, 2, 5, 6, 1, 10, 8, 4, 9};
+    // int[] arr = {6, 4, 2,11};
+    // int[] arr = {4, 6};
+    // int[] arr = {6, 4};
     sort(arr, 0, arr.length - 1);
     print(arr);
   }
@@ -36,7 +42,7 @@ public class demo6_quick {
     int pivot = arr[rightBound];// 轴!!!
     int left = leftBound;
     int right = rightBound - 1;
-    // left = 0 right = 0;
+    // 只有两个的时候  left = 0 right = 0;
     while (left < right) {
       // 数组越界  最大的
       while (left <= right && arr[left] <= pivot) {
@@ -46,8 +52,8 @@ public class demo6_quick {
       while (left <= right && arr[right] > pivot) {
         right--; //
       }
-      System.out.println(" -- left=" + left + ", right=" + right);
-      System.out.println(" -- arr[left]=" + arr[left] + " arr[right]=" + arr[right]);
+      // System.out.println(" -- left=" + left + ", right=" + right);
+      // System.out.println(" -- arr[left]=" + arr[left] + " arr[right]=" + arr[right]);
       if (left < right) {
         swap(arr, left, right);
       }
@@ -55,7 +61,9 @@ public class demo6_quick {
       print(arr);
       System.out.println();
     }
-    swap(arr, left, rightBound);
+    if (arr[left] > pivot) {
+      swap(arr, left, rightBound);
+    }
     return left;
   }
 

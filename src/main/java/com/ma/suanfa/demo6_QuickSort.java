@@ -15,8 +15,15 @@ import lombok.extern.slf4j.Slf4j;
 public class demo6_QuickSort {
 
   public static void main(String[] args) {
-    int[] arr = {7, 3, 2, 8, 1, 9, 5, 4, 10, 6};
-    // int[] arr = {7, 2};
+    // int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 1, 9, 5, 6, 4, 9, 6, 10};
+    // int[] arr = {7, 3, 9, 2, 6, 8, 8, 1, 9, 5, 4, 9, 10};
+    // int[] arr = {7, 3, 2, 8, 1, 9, 5, 4, 10, 6, 11};
+    // int[] arr = {7, 3, 2, 6, 8, 1, 9, 5, 4, 10};
+    // int[] arr = {7, 3, 2, 5, 6, 1, 10, 8, 4, 9};
+    // int[] arr = {6, 4, 2,11};
+    // int[] arr = {4, 6};
+    // int[] arr = {6, 4};
+    int[] arr = {7, 2};
     sort(arr, 0, arr.length - 1);
     print(arr);
   }
@@ -49,8 +56,8 @@ public class demo6_QuickSort {
       }
       print(arr);
     }
-    log.info(" ##### left={}, right={} ", left, right);
-    log.info(" ##### arr[left] = {} arr[right] = {}", arr[left], arr[right]);
+    // log.info(" ##### left={}, right={} ", left, right);
+    // log.info(" ##### arr[left] = {} arr[right] = {}", arr[left], arr[right]);
     if (pivot < arr[left]) {
       swap(arr, left, rightBound);
     }
