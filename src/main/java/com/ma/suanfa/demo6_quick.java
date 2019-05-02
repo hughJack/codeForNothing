@@ -15,11 +15,11 @@ import lombok.extern.slf4j.Slf4j;
 public class demo6_quick {
 
   public static void main(String[] args) {
-    int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 1, 9, 5, 6, 4, 9, 6, 10};
+    // int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 1, 9, 5, 6, 4, 9, 6, 10};
     // int[] arr = {7, 3, 9, 2, 6, 8, 8, 1, 9, 5, 4, 9, 10};
     // int[] arr = {7, 3, 2, 6, 8, 1, 9, 5, 4, 10};
     // int[] arr = {7, 3, 2, 5, 6, 1, 10, 8, 4, 9};
-    // int[] arr = {6, 4, 2,11};
+    int[] arr = {6, 4, 5, 1, 11, 2, 3};
     // int[] arr = {4, 6};
     // int[] arr = {6, 4};
     // int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 9, 5, 6, 4, 9, 6, 10,1};
@@ -44,12 +44,14 @@ public class demo6_quick {
     int left = leftBound;
     int right = rightBound - 1;
     // 只有两个的时候  left = 0 right = 0;
+    //{6, 4, 5, 1, 11, 2, 3};
     while (left <= right) {
-      // 数组越界  最大的
+      // 左指针的含义是?指向较大的数值?  left 指向大于等于轴的值
       while (left <= right && arr[left] <= pivot) {
         left++; //
       }
       // 数组越界 -1
+      // 获取  小于等轴的值, 因为此时是不涉及交换
       while (left <= right && arr[right] > pivot) {
         right--; //
       }
@@ -62,8 +64,13 @@ public class demo6_quick {
       // print(arr);
       // System.out.println();
     }
-    // if (arr[left] > pivot) {
-      swap(arr, left, rightBound);
+    // if (arr[left] > pivot)
+    // print(arr);
+    // System.out.println(left);
+    // System.out.println(rightBound);
+    // 此本身的含义是就是  交换两个数的位置
+    // 实现方法是: left指向较大的数,rightBound指向较小的数
+    swap(arr, left, rightBound);
     // }
     return left;
   }
