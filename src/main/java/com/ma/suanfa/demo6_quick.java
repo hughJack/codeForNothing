@@ -22,6 +22,7 @@ public class demo6_quick {
     // int[] arr = {6, 4, 2,11};
     // int[] arr = {4, 6};
     // int[] arr = {6, 4};
+    // int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 9, 5, 6, 4, 9, 6, 10,1};
     sort(arr, 0, arr.length - 1);
     print(arr);
   }
@@ -43,7 +44,7 @@ public class demo6_quick {
     int left = leftBound;
     int right = rightBound - 1;
     // 只有两个的时候  left = 0 right = 0;
-    while (left < right) {
+    while (left <= right) {
       // 数组越界  最大的
       while (left <= right && arr[left] <= pivot) {
         left++; //
@@ -57,13 +58,13 @@ public class demo6_quick {
       if (left < right) {
         swap(arr, left, right);
       }
-      System.out.println("--");
-      print(arr);
-      System.out.println();
+      // System.out.println("--");
+      // print(arr);
+      // System.out.println();
     }
-    if (arr[left] > pivot) {
+    // if (arr[left] > pivot) {
       swap(arr, left, rightBound);
-    }
+    // }
     return left;
   }
 
