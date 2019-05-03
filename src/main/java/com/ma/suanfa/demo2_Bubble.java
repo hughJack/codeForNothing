@@ -11,10 +11,10 @@ package com.ma.suanfa;
 /*
  * 描述   : 冒泡排序
  * 最优解 : 时间复杂度为O(n平方)
- *
+ * m
  * @param
- * @return
- * @author: sunshumeng @ 2019/4/29 13:53
+ * @return: 从后向前排序
+ * @author: 每比较一次 都可能导致交换
  */
 public class demo2_Bubble {
 
@@ -26,17 +26,19 @@ public class demo2_Bubble {
   }
 
   static void sort(int[] a) {
+    // 两两比较
     for (int j = a.length - 1; j > 0; j--) {
       findMax(a, j);
     }
   }
 
-  private static void findMax(int[] a, int j) {
+  private static void findMax(int[] arr, int j) {
     for (int i = 0; i < j; i++) {
-      if (a[i] > a[i + 1]) {
-        swap(a, i, i + 1);
+      if (arr[i] > arr[i + 1]) {
+        swap(arr, i, i + 1);
       }
     }
+    print(arr);
   }
 
   static void swap(int[] a, int n, int m) {
@@ -49,6 +51,7 @@ public class demo2_Bubble {
     for (int i = 0; i < a.length; i++) {
       System.out.print(a[i] + " ");
     }
+    System.out.println();
   }
 
 }

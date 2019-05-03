@@ -15,14 +15,14 @@ public class demo1_Select {
 
   /**
    * @author sunshumeng
-   * @describe 选择排序
+   * @describe 选择排序 : 选择比当前位置arr[i]小索引,与arr[min]进行交换
    */
   @Test
   public void selectSort() {
-    int a[] = {8, 5, 2, 6, 9, 3, 1, 4, 0, 7}; // 从小到大选择排序
+    int a[] = {8, 5, 2, 6, 9, 3, 1, 4, 0, 4, 7}; // 从小到大选择排序
     int n = a.length;
     for (int i = 0; i < n - 1; i++) {// i为已排序序列的末尾
-      int min = i;//标记
+      int min = i;// 记录当前最小值的位置
       for (int j = i + 1; j < n; j++) {
         if (a[j] < a[min]) {//后一个数与前面一个数比较，找出最小值
           min = j;
@@ -33,9 +33,11 @@ public class demo1_Select {
         a[min] = a[i];
         a[i] = temp;
       }
+      for (int k = 0; k < n; k++) {
+        System.out.print(a[k] + " ");
+      }
+      System.out.println();
     }
-    for (int i = 0; i < n; i++) {
-      System.out.print (a[i] + " ");
-    }
+
   }
 }

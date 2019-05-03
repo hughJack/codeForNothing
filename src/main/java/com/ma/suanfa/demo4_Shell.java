@@ -44,7 +44,7 @@ public class demo4_Shell {
     // int gap = 4; // 可以使用 h
     for (int gap = 4; gap > 0; gap = (gap - 1) / 3) {
       for (int i = gap; i < a.length; i += gap) { // 拿出第i张牌
-        for (int j = i; j > gap - 1; j -= gap) { // 与他前面的所有进行比较 , 如果小于则交换
+        for (int j = i; j > gap - 1; j -= gap) {  // 与他前面的所有进行比较 , 如果小于则交换
           if (a[j] < a[j - gap]) {
             swap(a, j, j - gap);
           }

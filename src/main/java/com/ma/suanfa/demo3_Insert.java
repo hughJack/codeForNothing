@@ -12,7 +12,7 @@ package com.ma.suanfa;
  * 描述 : 插入排序, 有点像冒泡排序反过来,冒泡是大的往后, 插入小的往前
  * 对于基于有序的数组最好用,
  * 稳定
- *
+ * 从前向后排序
  */
 public class demo3_Insert {
 
@@ -24,12 +24,12 @@ public class demo3_Insert {
 
   static void sort(int[] a) {
     for (int i = 1; i < a.length; i++) { // 拿出第i张牌
-      for (int j = i; j > 0; j--) { // 与他前面的所有进行比较 , 如果小于则交换
+      for (int j = i; j > 0; j--) {       // 与他前面的所有进行比较 , 如果小于则交换
         if (a[j] < a[j - 1]) {
           swap(a, j, j - 1);
         }
         print(a);
-        System.out.println(i + " = i");
+        System.out.println(" i = " + i );
       }
     }
   }

@@ -24,9 +24,10 @@ public class demo5_merge {
   static void sort(int[] arr) {
     merge(arr);
   }
-  // 子数组已经排好序的情况下,演示数组的合并
+
+  // 演示数组的合并
   static void merge(int[] arr) {
-    int mid = arr.length >> 1;
+    int mid = arr.length >> 1; // len/2
     System.out.println(mid);
 
     int temp[] = new int[arr.length];
@@ -34,14 +35,15 @@ public class demo5_merge {
     int j = mid + 1; // 指向后一个数组
     int k = 0;// 指向 temp 数组
     // 这个条件真的要命啊!!!
-    for (; i <= mid && j < arr.length; k++) {
+    while (i <= mid && j < arr.length) {
       if (arr[i] <= arr[j]) {
-        temp[k] = arr[i++];
+        temp[k++] = arr[i++];
       } else {
-        temp[k] = arr[j++];
+        temp[k++] = arr[j++];
       }
       print(temp);
     }
+    // 子数组中剩余的数据  放在末尾
     while (i <= mid) {
       temp[k++] = arr[i++];
     }
