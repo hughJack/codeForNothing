@@ -6,7 +6,7 @@
  * @since [产品/模块版本] （可选）
  * @deprecated （可选）
  */
-package com.ma.pattern;
+package com.ma.pattern.responsbility;
 
 import lombok.Data;
 
