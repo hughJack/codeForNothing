@@ -6,8 +6,10 @@
  * @since [产品/模块版本] （可选）
  * @deprecated （可选）
  */
-package com.ma.IO.BIO;
+package com.ma.IO.BIO.demo;
 
+import com.ma.IO.BIO.demo.client.Client;
+import com.ma.IO.BIO.demo.server.Server;
 import java.io.IOException;
 import java.util.Random;
 

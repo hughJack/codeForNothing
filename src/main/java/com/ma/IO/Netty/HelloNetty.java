@@ -1,10 +1,12 @@
 package com.ma.IO.Netty;
 
-import com.ma.IO.AIO.Server;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -45,8 +47,9 @@ class NettyServer {
         });
 
     try {
+      // 绑定端口，开始接收进来的连接
       ChannelFuture f = b.bind(port).sync();
-
+      // 等待服务器 socket 关闭 。在这个例子中，这不会发生，但你可以优雅地关闭你的服务器。
       f.channel().closeFuture().sync();
     } catch (InterruptedException e) {
       e.printStackTrace();

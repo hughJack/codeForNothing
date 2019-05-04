@@ -22,8 +22,8 @@ import java.util.Set;
 // Non-Blocking IO
 // 主线程有一个 Selector 死循环轮询遍历管理事件状态: accept read write
 // 可以用于用于写类似Tomcat的服务器
-// Server 特别难写,
-public class Server {
+// NIOServer 特别难写,
+public class NIOServer {
 
   public static void main(String[] args) throws IOException {
     ServerSocketChannel ssc = ServerSocketChannel.open(); // 双向  可读可写

@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
  * @return
  * @author: sunshumeng
  */
-public class ServerWithThreadGroup {
+public class AIOServerWithThreadGroup {
 
   public static void main(String[] args) throws Exception {
     // 对客户端进行分组 , 每个分组对应的是

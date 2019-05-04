@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PoolServer {
+public class NIOPoolServer {
 
   ExecutorService pool = Executors.newFixedThreadPool(50);
 
@@ -30,7 +30,7 @@ public class PoolServer {
    * @throws IOException
    */
   public static void main(String[] args) throws IOException {
-    PoolServer server = new PoolServer();
+    NIOPoolServer server = new NIOPoolServer();
     server.initServer(8000);
     server.listen();
   }
@@ -84,7 +84,7 @@ public class PoolServer {
           //
           key.interestOps(key.interestOps() & (~SelectionKey.OP_READ));
           //
-          pool.execute(new ThreadHandlerChannel(key));
+          pool.execute(new NIOThreadHandlerChannel(key));
         }
       }
     }

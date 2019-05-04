@@ -19,11 +19,11 @@ import java.nio.channels.SocketChannel;
  *
  * @throws IOException
  */
-class ThreadHandlerChannel extends Thread {
+class NIOThreadHandlerChannel extends Thread {
 
   private SelectionKey key;
 
-  ThreadHandlerChannel(SelectionKey key) {
+  NIOThreadHandlerChannel(SelectionKey key) {
     this.key = key;
   }
 

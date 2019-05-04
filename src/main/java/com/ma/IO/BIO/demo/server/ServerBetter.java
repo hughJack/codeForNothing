@@ -6,26 +6,37 @@
  * @since [产品/模块版本] （可选）
  * @deprecated （可选）
  */
-package com.ma.IO.BIO;
+package com.ma.IO.BIO.demo.server;
+
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
- * BIO服务端源码
+ * BIO服务端源码__伪异步I/O
  *
- * @author 从以上代码，很容易看出，BIO主要的问题在于每当有一个新的客户端请求接入时，
- * @version 服务端必须创建一个新的线程来处理这条链路，在需要满足高性能、高并发的场景是没法应用的
- * @time （大量创建新的线程会严重影响服务器性能，甚至罢工）。
+ * @author yangtao__anxpp.com
+ * @version 1.0
+ * @desc 使用FixedThreadPool我们就有效的控制了线程的最大数量，保证了系统有限的资源的控制，实现了N:M的伪异步I/O模型。
+ *
+ *     但是，正因为限制了线程数量，如果发生大量并发请求，超过最大数量的线程就只能等待，直到线程池中的有空闲的线程可以被复用。而对Socket的输入流就行读取时，会一直阻塞，直到发生：
+ *
+ *     1.有数据可读     2.可用数据以及读取完毕     3.发生空指针或I/O异常    
+ * 所以在读取数据较慢时（比如数据量大、网络传输慢等），大量并发的情况下，其他接入的消息，只能一直等待，这就是最大的弊端。
+ *
+ *     而后面即将介绍的NIO，就能解决这个难题。
  */
-public final class Server {
-
+public final class ServerBetter {
 
   //默认的端口号
   private static int DEFAULT_PORT = 12345;
   //单例的ServerSocket
   private static ServerSocket server;
+  //线程池 懒汉式的单例
+  private static ExecutorService executorService = Executors.newFixedThreadPool(60);
 
   //根据传入参数设置监听端口，如果没有参数调用以下方法并使用默认值
   public static void start() throws IOException {
@@ -49,7 +60,7 @@ public final class Server {
         Socket socket = server.accept();
         //当有新的客户端接入时，会执行下面的代码
         //然后创建一个新的线程处理这条Socket链路
-        new Thread(new ServerHandler(socket)).start();
+        executorService.execute(new ServerHandler(socket));
       }
     } finally {
       //一些必要的清理工作

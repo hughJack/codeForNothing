@@ -7,12 +7,12 @@ import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
 
-// asynchronous 异步IO\
+// asynchronous 异步IO
 // 单线程的模型
 // 模型: 操作系统(OS)  通知 Selector 有连接过来了 , 只处理accept 的事件
 // 需要调用系统的底层的代码
 // 每一步使用钩子函数 (观察者模式)
-public class Server {
+public class AIOServer {
 
   public static void main(String[] args) throws Exception {
     final AsynchronousServerSocketChannel serverChannel = AsynchronousServerSocketChannel.open()
