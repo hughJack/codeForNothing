@@ -19,14 +19,11 @@ public class Msg {
     Msg msg = new Msg();
     msg.setMsg("Hello <world>, 996 bad guy");
     msg.setName("yangguan");
-    // 责任链模式
-    List<Filter> filters = new ArrayList<>();
-    filters.add(new HtmlFilter());
-    filters.add(new SenstiveFilter());
-    // 责任链模式
-    for (Filter filter : filters) {
-      filter.doFilter(msg);
-    }
+    // 责任链模式,, 形成一个链条??
+    FilerChain filerChain = new FilerChain();
+    filerChain.add(new HtmlFilter());
+    filerChain.add(new SenstiveFilter());
+    filerChain.doFilter(msg);
     //
     System.out.println(msg);
   }
@@ -69,3 +66,19 @@ class SenstiveFilter implements Filter {
   }
 }
 
+
+@Data
+class FilerChain {
+
+  List<Filter> filters = new ArrayList<>();
+
+  public void add(Filter f) {
+    filters.add(f);
+  }
+
+  public void doFilter(Msg msg) {
+    for (Filter filter : filters) {
+      filter.doFilter(msg);
+    }
+  }
+}
