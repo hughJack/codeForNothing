@@ -45,48 +45,53 @@ public class Msg {
 
 interface Filter {
 
-  void doFilter(Msg msg);
+  // 实现链式执行的终止,  只有为true的时候,  可以继续执行
+  boolean doFilter(Msg msg);
 }
 
 class HtmlFilter implements Filter {
 
   @Override
-  public void doFilter(Msg msg) {
+  public boolean doFilter(Msg msg) {
     String replace = msg.getMsg();
     replace = replace.replaceAll("<", "[");
     replace = replace.replaceAll(">", "]");
     msg.setMsg(replace);
 
+    return true;
   }
 }
 
 class SenstiveFilter implements Filter {
 
   @Override
-  public void doFilter(Msg msg) {
+  public boolean doFilter(Msg msg) {
     String replace = msg.getMsg();
     replace = replace.replaceAll("996", "007");
     msg.setMsg(replace);
+    return false;
   }
 }
 
 class FaceFilter implements Filter {
 
   @Override
-  public void doFilter(Msg msg) {
+  public boolean doFilter(Msg msg) {
     String replace = msg.getMsg();
     replace = replace.replaceAll(":", "V");
     msg.setMsg(replace);
+    return true;
   }
 }
 
 class UrlFilter implements Filter {
 
   @Override
-  public void doFilter(Msg msg) {
+  public boolean doFilter(Msg msg) {
     String replace = msg.getMsg();
     replace = replace.replaceAll("http", "https");
     msg.setMsg(replace);
+    return true;
   }
 }
 
@@ -102,9 +107,12 @@ class FilterChain implements Filter {
   }
 
   @Override
-  public void doFilter(Msg msg) {
+  public boolean doFilter(Msg msg) {
     for (Filter filter : filters) {
-      filter.doFilter(msg);
+      if (!filter.doFilter(msg)) {
+        return false;// return 之后  不再向下执行
+      }
     }
+    return true;
   }
 }
