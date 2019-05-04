@@ -8,6 +8,8 @@
  */
 package com.ma.pattern.responsbility;
 
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -17,10 +19,15 @@ public class Msg {
     Msg msg = new Msg();
     msg.setMsg("Hello <world>, 996 bad guy");
     msg.setName("yangguan");
-
-    new HtmlFilter().doFilter(msg);
-    new SenstiveFilter().doFilter(msg);
-
+    // 责任链模式
+    List<Filter> filters = new ArrayList<>();
+    filters.add(new HtmlFilter());
+    filters.add(new SenstiveFilter());
+    // 责任链模式
+    for (Filter filter : filters) {
+      filter.doFilter(msg);
+    }
+    //
     System.out.println(msg);
   }
 
