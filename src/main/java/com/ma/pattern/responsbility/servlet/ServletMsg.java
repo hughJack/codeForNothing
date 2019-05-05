@@ -9,7 +9,6 @@
 package com.ma.pattern.responsbility.servlet;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import lombok.Data;
 
@@ -78,7 +77,7 @@ class FilterChain implements Filter {
 
   private List<Filter> filters = new ArrayList<>();
   // private LinkedList filters =  new LinkedList<>();
-  private int index = 0;
+  private int pos = 0;
 
 
   // 如果实现了Filter接口, 那么也可以实现添加  另外一个链条, 因为List支持
@@ -90,10 +89,10 @@ class FilterChain implements Filter {
 
   @Override
   public boolean doFilter(Request request, Response response, FilterChain filterChain) {
-    if (index == filters.size()) {
+    if (pos == filters.size()) {
       return false;
     }
-    Filter filter = filters.get(index++);
+    Filter filter = filters.get(pos++);
     return filter.doFilter(request, response, filterChain);
   }
 }
