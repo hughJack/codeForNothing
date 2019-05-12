@@ -8,17 +8,19 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
 @Slf4j
 @ThreadSafe
-public class AtomicExample5 {
+public class Demo5_Atomic_FieldUpdater {
 
-  // AtomicIntegerFieldUpdater 更新指定的类的执行的字段的值
- //  目的是为了只执行一次(对字段进行原子性的修改)
-  private static AtomicIntegerFieldUpdater<AtomicExample5> updater = AtomicIntegerFieldUpdater
-      .newUpdater(AtomicExample5.class, "count");
+  // AtomicIntegerFieldUpdater 原子性的更新指定的类的字段
+  // 目的是为了只执行一次(对字段进行原子性的修改)
+  private static AtomicIntegerFieldUpdater<Demo5_Atomic_FieldUpdater> updater = AtomicIntegerFieldUpdater
+      .newUpdater(Demo5_Atomic_FieldUpdater.class, "count");
+
+  // 必须使用 volatile 修饰字段
   @Getter
   private volatile int count = 100;
 
   public static void main(String[] args) {
-    AtomicExample5 example5 = new AtomicExample5();
+    Demo5_Atomic_FieldUpdater example5 = new Demo5_Atomic_FieldUpdater();
     if (updater.compareAndSet(example5, 100, 120)) {
       log.info("parse sucess 1,{}", example5.getCount());
     }

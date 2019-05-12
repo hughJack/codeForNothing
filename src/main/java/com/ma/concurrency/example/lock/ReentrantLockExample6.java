@@ -20,6 +20,11 @@ public class ReentrantLockExample6 {
     ReentrantLock reentrantLock = new ReentrantLock();
     // condition 维护了一个等待队列,用于线程之间的通信?
     // 使用比较复杂,很少使用
+    // ReentrantLock 类可以唤醒指定条件的线程，而 object 的唤醒是随机的
+    // 唤醒不同的Condition对应的锁!!!
+    // conditions1.singleAll();
+    // conditions2.singleAll();
+    // conditions3.singleAll();
     Condition condition = reentrantLock.newCondition();
 
     new Thread(() -> {

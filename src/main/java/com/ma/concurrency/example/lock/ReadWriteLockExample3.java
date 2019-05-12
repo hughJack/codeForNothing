@@ -13,8 +13,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-public class ReentrantReadWriteLockExample3 {
+// 读的时候不能写
+// 写的时候不能读
+// 支持多读
+public class ReadWriteLockExample3 {
 
   private final Map<String, Data> map = new HashMap<>();
   private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();

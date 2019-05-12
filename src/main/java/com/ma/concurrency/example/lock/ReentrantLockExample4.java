@@ -41,7 +41,7 @@ public class ReentrantLockExample4 {
     Thread t2 = new Thread(() -> {
       try {
         // reentrantLock.lock();  这个方法是一直等待获取锁
-        // 线程执行的过程中,优先响应中断, 会响应 Interrupte 方法,  主线程调用interrupt()来打断!!!
+        // 线程执行的过程中,优先响应中断, 会响应 Interrupt 方法,  主线程调用interrupt()来打断!!!
         // ,  让线程不再等待, 因为他得不到锁
         reentrantLock.lockInterruptibly();
         log.info("t2.start");
