@@ -4,29 +4,17 @@ public class FactoryDemo {
 
   public static void main(String[] args) {
 
-    Fruit f = Factory.getInstance("apple");  //静态方法
-    //只要传入字符串进入就可以实例化对象--深度解耦了
+    Fruit f = Factory.getInstance("apple");  // 静态方法
+    // 只要传入字符串进入就可以实例化对象--深度解耦了
     // Fruit f = Factory.getInstance("cn.mldn.demo.Orange");
     f.eat();
   }
 }
 
-interface Fruit {
-
-  public void eat();
-}
-
-class Apple implements Fruit {
-
-  public void eat() {
-    System.out.println("吃苹果。");
-  }
-
-}
 
 class Factory {
 
-  // 这个时候即使增加了接口的子类，工厂类照样可以完成对象的实例化操作，
+// 这个时候即使增加了接口的子类，工厂类照样可以完成对象的实例化操作，
 // 这个才是真正的工厂类，可以应对于所有的变化。
 //
 // 如果单独从开发角度而言，与开发者关系不大，但是对于日后学习的一些框架技术这个就是它实现的命脉，
@@ -46,6 +34,19 @@ class Factory {
       e.printStackTrace();
     }
     return f;
+  }
+
+}
+
+interface Fruit {
+
+  public void eat();
+}
+
+class Apple implements Fruit {
+
+  public void eat() {
+    System.out.println("吃苹果。");
   }
 
 }

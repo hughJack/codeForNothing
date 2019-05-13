@@ -6,11 +6,10 @@
  * @since [产品/模块版本] （可选）
  * @deprecated （可选）
  */
-package com.ma.concurrency.example.commonUnsafe;
+package com.ma.concurrency.example.unsafe;
 
 import com.ma.concurrency.annoations.NotRecommend;
 import com.ma.concurrency.annoations.NotThreadSafe;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

@@ -6,7 +6,7 @@
  * @since [产品/模块版本] （可选）
  * @deprecated （可选）
  */
-package com.ma.concurrency.example.commonUnsafe;
+package com.ma.concurrency.example.unsafe;
 
 
 import java.util.concurrent.CountDownLatch;

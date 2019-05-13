@@ -28,6 +28,7 @@ public class CountdownLatchExample1 {
     ExecutorService executorService = Executors.newCachedThreadPool();
     final Semaphore semaphore = new Semaphore(threadTotal);
     final CountDownLatch countDownLatch = new CountDownLatch(clientTotal);// 标识一次拿几个许可
+    System.out.println(countDownLatch.getCount());
     for (int i = 0; i < clientTotal; i++) {
       final  int finalI = i;
       executorService.execute(() -> {
@@ -41,7 +42,10 @@ public class CountdownLatchExample1 {
         countDownLatch.countDown();
       });
     }
+    System.out.println(countDownLatch.getCount());
     countDownLatch.await();
+    System.out.println(countDownLatch.getCount());
+
     executorService.shutdown();
   }
 

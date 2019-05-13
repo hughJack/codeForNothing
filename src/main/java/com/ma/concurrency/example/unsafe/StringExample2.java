@@ -1,4 +1,4 @@
-package com.ma.concurrency.example.commonUnsafe;
+package com.ma.concurrency.example.unsafe;
 /**
  * StringBuilder
  */
