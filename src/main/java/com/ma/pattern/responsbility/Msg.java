@@ -37,7 +37,7 @@ public class Msg {
 
   @Override
   public String toString() {
-    return "Msg{" +
+    return "ServletMsg{" +
         "msg='" + msg + '\'' +
         '}';
   }
