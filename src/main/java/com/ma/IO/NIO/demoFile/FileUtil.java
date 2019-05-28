@@ -12,7 +12,9 @@ import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
-// 用于封装三种方案（LineNumberReader、RandomAccessFile、BufferedRandomAccessFile）的文件读取
+// 用于封装三种方案
+// （LineNumberReader、RandomAccessFile、BufferedRandomAccessFile）
+// 的文件读取
 public class FileUtil {
 
   /**
@@ -20,9 +22,9 @@ public class FileUtil {
    *
    * @param file 源文件
    * @param encoding 文件编码
-   * @param pos 偏移量
-   * @param num 读取量
-   * @return pins文件内容，pos当前偏移量
+   * @param pos 偏移量  指针
+   * @param num 读取量  测试50000行
+   * @return pins:文件内容，pos:当前偏移量
    */
   public static Map<String, Object> BufferedRandomAccessFileReadLine(File file, String encoding,
       long pos, int num) {
@@ -32,7 +34,7 @@ public class FileUtil {
     BufferedRandomAccessFile reader = null;
     try {
       reader = new BufferedRandomAccessFile(file, "r");
-      reader.seek(pos);
+      reader.seek(pos); // 定位位置
       for (int i = 0; i < num; i++) {
         String pin = reader.readLine();
         if (StringUtils.isBlank(pin)) {

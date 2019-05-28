@@ -7,11 +7,6 @@ import java.util.Map;
 
 import lombok.Getter;
 
-//---------------------
-//    作者：Stormbreaker1995
-//    来源：CSDN
-//    原文：https://blog.csdn.net/foye12/article/details/78647647
-//    版权声明：本文为博主原创文章，转载请附上博文链接！
 @Getter
 public class LFU2<k, v> {
   private final int capcity;

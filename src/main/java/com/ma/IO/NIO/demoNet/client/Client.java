@@ -6,7 +6,7 @@
  * @since [产品/模块版本] （可选）
  * @deprecated （可选）
  */
-package com.ma.IO.NIO.demo.client;
+package com.ma.IO.NIO.demoNet.client;
 
 
 public class Client {

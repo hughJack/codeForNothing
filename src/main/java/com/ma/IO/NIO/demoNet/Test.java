@@ -6,11 +6,11 @@
  * @since [产品/模块版本] （可选）
  * @deprecated （可选）
  */
-package com.ma.IO.NIO.demo;
+package com.ma.IO.NIO.demoNet;
 
 
-import com.ma.IO.NIO.demo.client.Client;
-import com.ma.IO.NIO.demo.server.Server;
+import com.ma.IO.NIO.demoNet.client.Client;
+import com.ma.IO.NIO.demoNet.server.Server;
 import java.util.Scanner;
 
 /**

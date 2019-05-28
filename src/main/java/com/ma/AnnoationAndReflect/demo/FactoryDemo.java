@@ -6,7 +6,7 @@ public class FactoryDemo {
 
     Fruit f = Factory.getInstance("apple");  // 静态方法
     // 只要传入字符串进入就可以实例化对象--深度解耦了
-    // Fruit f = Factory.getInstance("cn.mldn.demo.Orange");
+    // Fruit f = Factory.getInstance("cn.mldn.demoNet.Orange");
     f.eat();
   }
 }
