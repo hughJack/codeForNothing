@@ -15,15 +15,17 @@ import lombok.extern.slf4j.Slf4j;
 public class demo6_quick {
 
   public static void main(String[] args) {
-    // int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 1, 9, 5, 6, 4, 9, 6, 10};
+     //int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 1, 9, 5, 6, 4, 9, 6, 10};
     // int[] arr = {7, 3, 9, 2, 6, 8, 8, 1, 9, 5, 4, 9, 10};
     // int[] arr = {7, 3, 2, 6, 8, 1, 9, 5, 4, 10};
     // int[] arr = {7, 3, 2, 5, 6, 1, 10, 8, 4, 9};
-    int[] arr = {6, 4, 5, 1, 11, 2, 3};
+    //int[] arr = {6, 4, 5, 1, 11, 2, 3};
     // int[] arr = {4, 6};
     // int[] arr = {6, 4};
-    // int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 9, 5, 6, 4, 9, 6, 10,1};
-    sort(arr, 0, arr.length - 1);
+     int[] arr = {7, 3, 6, 9, 2, 6, 8, 8, 9, 5, 6, 4, 9, 6, 10,1};
+    //sort(arr, 0, arr.length - 1);
+    //print(arr);
+    sort2(arr, 0, arr.length - 1);
     print(arr);
   }
 
@@ -73,6 +75,34 @@ public class demo6_quick {
     swap(arr, left, rightBound);
     // }
     return left;
+  }
+
+
+  public static int partition2(int[] arr, int left, int right, int point) {
+    int leftPtr = left - 1;
+    int rightPtr = right;
+    while (true) {
+      while (leftPtr < rightPtr && arr[++leftPtr] < point) ;
+      while (leftPtr < rightPtr && arr[--rightPtr] > point) ;
+      if (leftPtr >= rightPtr) {
+        break;
+      } else {
+        swap(arr, leftPtr, rightPtr);
+      }
+    }
+    // 关键字和当前所指的进行交换
+    swap(arr, leftPtr, right);
+    return leftPtr;
+  }
+
+  public static void sort2(int[] arr, int leftBound, int rightBound) {
+    if (leftBound >= rightBound) {
+      return;
+    }
+    int point = arr[rightBound];
+    int mid = partition2(arr, leftBound, rightBound, point);
+    sort2(arr, leftBound, mid - 1);
+    sort2(arr, mid + 1, rightBound);
   }
 
   static void swap(int[] a, int n, int m) {
