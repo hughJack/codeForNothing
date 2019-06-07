@@ -1,14 +1,21 @@
 package com.ma.concurrency.example.Future;
 
 import org.apache.commons.lang3.RandomUtils;
+import org.omg.CORBA.portable.UnknownException;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -26,6 +33,36 @@ public class Demo3_CompleteFuture {
       new Shop("shop7"),
       new Shop("shop8")
   );
+
+  // 根据实际情况增减 --- 异常的处理
+  public static void third(String[] args) {
+    //Callable callable;
+    //FutureTask ftask = new FutureTask<>(callable);
+    //int timeoutSec = 30;
+    //try {
+    //  MyResult result = ftask.get(timeoutSec, TimeUnit.SECONDS);
+    //} catch (ExecutionException e) {
+    //  Throwable t = e.getCause();
+    //  // handle some checked exceptions
+    //  if (t instantanceof IOExcaption){
+    //    xxx;
+    //  } else if (...){
+    //    xxx;
+    //  } else{ // handle remained checked exceptions and unchecked exceptions
+    //    throw new RuntimeException("xxx", t);
+    //  }
+    //} catch (CancellationException e) {
+    //  xxx;
+    //  throw new UnknownException(String.format("Task %s canceled unexpected", taskId));
+    //} catch (TimeoutException e) {
+    //  xxx;
+    //  LOGGER.error(String.format("Timeout for %ds, trying to cancel task: %s", timeoutSec, taskId));
+    //  ftask.cancel();
+    //  LOGGER.debug(String.format("Succeed to cancel task: %s" % taskId));
+    //} catch (InterruptedException e) {
+    //  xxx;
+    //}
+  }
 
   // http://www.jcodecraeer.com/a/chengxusheji/java/2017/1226/9011.html
   // 分步迭代
