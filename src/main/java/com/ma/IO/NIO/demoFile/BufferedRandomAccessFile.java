@@ -129,11 +129,11 @@ public class BufferedRandomAccessFile extends RandomAccessFile {
     }
   }
 
-//      public boolean isEOF() throws IOException  
-//      {  
-//          assert getFilePointer() <= length();  
-//          return getFilePointer() == length();  
-//      }  
+//      public boolean isEOF() throws IOException
+//      {
+//          assert getFilePointer() <= length();
+//          return getFilePointer() == length();
+//      }
 
   public void close() throws IOException {
     this.flush();
@@ -228,7 +228,7 @@ public class BufferedRandomAccessFile extends RandomAccessFile {
 
   public int read() throws IOException {
     if (this.curr_ >= this.hi_) {
-      // test for EOF
+      // test2 for EOF
       // if (this.hi < this.maxHi) return -1;
       if (this.hitEOF_) {
         return -1;
@@ -251,7 +251,7 @@ public class BufferedRandomAccessFile extends RandomAccessFile {
 
   public int read(byte[] b, int off, int len) throws IOException {
     if (this.curr_ >= this.hi_) {
-      // test for EOF
+      // test2 for EOF
       // if (this.hi < this.maxHi) return -1;
       if (this.hitEOF_) {
         return -1;
@@ -328,4 +328,4 @@ public class BufferedRandomAccessFile extends RandomAccessFile {
     this.curr_ += len;
     return len;
   }
-}  
+}

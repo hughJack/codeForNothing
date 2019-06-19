@@ -27,7 +27,7 @@ public class Main {
   }
 
   public void test(String sth) {
-    System.out.println("hello test from main" + sth);
+    System.out.println("hello test2 from main" + sth);
   }
 }
 

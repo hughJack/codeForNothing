@@ -20,7 +20,7 @@ public class RandomAccessFileTest {
   private static final int NUM = 50;
 
   private static File file = new File(
-      ClassLoader.getSystemResource("").getPath() + File.separator + "test.txt");
+      ClassLoader.getSystemResource("").getPath() + File.separator + "test2.txt");
   private static File randomFile = new File(
       ClassLoader.getSystemResource("").getPath() + File.separator + "RandomFile.txt");
 
@@ -57,7 +57,7 @@ public class RandomAccessFileTest {
   @Test
   public void testRandomAccessRead() {
     long start = System.currentTimeMillis();
-//  
+//
     logger.info(String.valueOf(file.exists()));
     long pos = 0L;
     while (true) {
@@ -69,7 +69,7 @@ public class RandomAccessFileTest {
       Object po = res.get("pins");
       List<String> pins = (List<String>) res.get("pins");
       if (CollectionUtils.isNotEmpty(pins)) {
-//                logger.info(Arrays.toString(pins.toArray()));  
+//                logger.info(Arrays.toString(pins.toArray()));
         if (pins.size() < NUM) {
           break;
         }
@@ -99,7 +99,7 @@ public class RandomAccessFileTest {
   @Test
   public void testBufferedRandomAccessRead() {
     long start = System.currentTimeMillis();
-//  
+//
     logger.info(String.valueOf(file.exists()));
     long pos = 0L;
     while (true) {
@@ -110,7 +110,7 @@ public class RandomAccessFileTest {
       }
       List<String> pins = (List<String>) res.get("pins");
       if (CollectionUtils.isNotEmpty(pins)) {
-//                logger.info(Arrays.toString(pins.toArray()));  
+//                logger.info(Arrays.toString(pins.toArray()));
         if (pins.size() < NUM) {
           break;
         }
@@ -133,7 +133,7 @@ public class RandomAccessFileTest {
     while (true) {
       List<String> pins = FileUtil.readLine(file, ENCODING, index, NUM);
       if (CollectionUtils.isNotEmpty(pins)) {
-//                logger.info(Arrays.toString(pins.toArray()));  
+//                logger.info(Arrays.toString(pins.toArray()));
         if (pins.size() < NUM) {
           break;
         }
@@ -144,4 +144,4 @@ public class RandomAccessFileTest {
     }
     logger.info(((System.currentTimeMillis() - start) / 1000) + "");
   }
-}  
+}
